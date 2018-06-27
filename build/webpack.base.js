@@ -1,7 +1,5 @@
-
 const path = require('path');
 const chalk = require('chalk');
-
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require('webpack')
 const HappyPack = require('happypack')
@@ -53,6 +51,10 @@ module.exports = {
         use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
         include: [resolve('src')],
         exclude: /node_modules/
+      },
+      {
+        test: /\.(htm|html)$/i,
+        loader: 'html-withimg-loader'
       },
       {
         test: /\.scss$/,

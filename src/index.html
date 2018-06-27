@@ -9,8 +9,6 @@
 <body>
     <div class="content-div">Hello World 1</div>
     <div class="test-image"></div>
-    <% if(process.env.NODE_ENV === 'development') {%>    
-    <script src="<%= htmlWebpackPlugin.options.vendor %>"></script>
-    <% } %>
+    <img src="./assets/loading.gif" alt="">
 </body>
 </html>

@@ -14,7 +14,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(baseConfig, {
     output:{
-        publicPath: './' // 这里要放的是静态资源CDN的地址(一般只在生产环境下配置)
+        publicPath: '/' // 这里要放的是静态资源CDN的地址(一般只在生产环境下配置)
     },
     plugins: [
         new HtmlWebpackPlugin({
