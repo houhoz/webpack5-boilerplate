@@ -1,0 +1,10 @@
+.hello {
+  color: red;
+  background: url('./../images/test.jpeg');
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+body {
+  background: blue;
+}
