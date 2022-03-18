@@ -10,7 +10,7 @@ module.exports = merge(common, {
     path: paths.build,
     filename: 'js/[name].[contenthash].bundle.js',
     clean: true,
-    // assetModuleFilename: 'images/[hash][ext][query]',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
   plugins: [
     new MiniCssExtractPlugin({
