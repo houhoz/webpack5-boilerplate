@@ -1,30 +1,10 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const paths = require('./paths')
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../dist'),
-    clean: true,
-    assetModuleFilename: 'images/[name][ext][query]',
-  },
+  entry: paths.src + '/index.js',
   plugins: [
-    // new webpack.ProgressPlugin({
-    //   activeModules: false,
-    //   entries: true,
-    //   handler(percentage, message, ...args) {
-    //     // custom logic
-    //     console.info(percentage, message, ...args)
-    //   },
-    //   modules: true,
-    //   modulesCount: 5000,
-    //   profile: false,
-    //   dependencies: true,
-    //   dependenciesCount: 10000,
-    //   percentBy: null,
-    // }),
     new HtmlWebpackPlugin({
       title: 'webpack打包',
       // favicon: paths.src + '/images/favicon.png',
@@ -35,7 +15,20 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: [paths.src],
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        include: [paths.src],
+        type: 'asset/resource',
+      },
+      {
+        test: /.(woff|woff2|eot|ttf|otf)$/i,
+        include: [paths.src],
         type: 'asset/resource',
       },
     ],
