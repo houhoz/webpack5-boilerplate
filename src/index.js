@@ -1,36 +1,16 @@
-import printMe from './js/print.js'
-import webpackImg from './images/webpack.svg'
-import './styles/index.scss'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import './index.css'
+const container = document.getElementById('root')
+const root = createRoot(container) // createRoot(container!) if you use TypeScript
+root.render(<App />)
 
-const ele = document.createElement('div')
-ele.classList.add('hello')
-ele.innerHTML = '点我'
-ele.onclick = printMe
-
-const img = new Image()
-img.src = webpackImg
-const app = document.querySelector('#root')
-
-const map = new Map()
-
-console.log('map', map)
-
-const promise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    if (Math.random() > 0.5) {
-      resolve('成功')
-    } else {
-      reject('失败')
-    }
-  }, 1000)
-})
-
-promise
-  .then(res => {
-    console.log('res', res)
+// 如果启动webpack热更新，则会执行一下代码
+if (module.hot) {
+  module.hot.accept('./App.js', () => {
+    const NextApp = require('./App.js').default
+    // 再次挂在到dom元素上
+    root.render(<NextApp />)
   })
-  .catch(err => {
-    console.log('err', err)
-  })
-
-app.append(ele, img)
+}
