@@ -1,0 +1,8 @@
+$body-color: red;
+
+body {
+  background-color: $body-color;
+  #root {
+    background-image: url('./img.png');
+  }
+}
